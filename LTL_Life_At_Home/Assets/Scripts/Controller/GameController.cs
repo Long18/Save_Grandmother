@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
     public float startHungerPoint, hungerPoint, healthValue, time, virusCount;
     public bool grandmaGotTouched;
 
+    public float[] listHightTime = new float[10];
+
     private void Awake()
     {
         if (instance == null)
@@ -42,6 +44,11 @@ public class GameController : MonoBehaviour
     {
         hungerPoint = startHungerPoint;
         Destroy(truyen, 3);
+
+        for (int i = 0; i < 10; i++)
+        {
+            listHightTime[i] = PlayerPrefs.GetFloat(string.Format("highTime{0}", i));
+        }
     }
 
     // Update is called once per frame
@@ -108,5 +115,19 @@ public class GameController : MonoBehaviour
         grandmaGotTouched = false;
         timeO.text = min + " : " + sec;
         virO.text = virusCount.ToString();
+
+        for (int i = 0; i < 10; i++)
+        {
+            listHightTime[i] = PlayerPrefs.GetFloat(string.Format("highTime{0}", i));
+        }
+
+        for (int i = 9; i >= 0; i--)
+        {
+            if (time > listHightTime[i])
+            {
+                listHightTime[i] = time;
+                PlayerPrefs.SetFloat(string.Format("highTime{0}", i), time);
+            }
+        }
     }
 }
