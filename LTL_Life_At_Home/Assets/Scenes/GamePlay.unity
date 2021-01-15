@@ -8544,6 +8544,17 @@ MonoBehaviour:
   time: 0
   virusCount: 0
   grandmaGotTouched: 0
+  listHightTime:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!4 &2141653607
 Transform:
   m_ObjectHideFlags: 0
