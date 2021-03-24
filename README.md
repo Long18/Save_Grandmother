@@ -1,4 +1,4 @@
-## 7.LTL Team Introduce
+## LTL Team Introduce 
 
 ### Mục Lục
 
