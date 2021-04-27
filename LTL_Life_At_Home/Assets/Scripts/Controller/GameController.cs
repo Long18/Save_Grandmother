@@ -16,15 +16,17 @@ public class GameController : MonoBehaviour
     public Transform playerStartPos, Pool;
     public GameObject playerObj, clouds, truyen;
     public Slider hpBar, alcoholBar, soapBar, maskBar;
-    public Text countFood, timeTxt, virusCountTxt, timeO, virO;
+    public Text countFood, timeTxt, timeO, txtVirusCount;
 
     [HideInInspector]
-    public int score, foodCount;
+    public int score, foodCount, virusCount;
     public int[] itemCount = new int[3];
-    public float startHungerPoint, hungerPoint, healthValue, time, virusCount;
+    public float startHungerPoint, hungerPoint, healthValue, time;
     public bool grandmaGotTouched;
 
     public float[] listHightTime = new float[10];
+
+    
 
     private void Awake()
     {
@@ -54,6 +56,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         switch (gameStage)
         {
             case GameStage.Ready:
@@ -74,6 +77,7 @@ public class GameController : MonoBehaviour
 
     void ReadyStat()
     {
+        
         playerObj.transform.position = playerStartPos.position;
         grandmaGotTouched = false;
         score = 0; itemCount[0] = 0; itemCount[0] = 0; itemCount[0] = 0; time = 0; virusCount = 0;
@@ -92,6 +96,9 @@ public class GameController : MonoBehaviour
             gameStage = GameStage.Over;
             OverStat();
         }
+
+
+
         hungerPoint -= Time.deltaTime;
         hpBar.value = hungerPoint;
         alcoholBar.value = itemCount[0]; if (itemCount[0] > 3) { itemCount[0] = 3; };
@@ -101,7 +108,8 @@ public class GameController : MonoBehaviour
         time += Time.deltaTime;
         min = (int)time / 60; sec = (int)time % 60;
         timeTxt.text = min + " : " + sec;
-        virusCountTxt.text = virusCount.ToString();
+        txtVirusCount.text = virusCount.ToString();
+
     }
 
     void OverStat()
@@ -114,7 +122,7 @@ public class GameController : MonoBehaviour
         }
         grandmaGotTouched = false;
         timeO.text = min + " : " + sec;
-        virO.text = virusCount.ToString();
+        txtVirusCount.text = virusCount.ToString();
 
         for (int i = 0; i < 10; i++)
         {

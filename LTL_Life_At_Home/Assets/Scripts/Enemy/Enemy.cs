@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public static Enemy enemy;
+
     GameObject playerObj;
     Rigidbody2D rb;
 
     bool isOnPlat, isGround, canMove;
 
-    public int startHP, startSpeed;
+    public int startHP, startSpeed, countVirus;
     float hp, speed;
 
     // Start is called before the first frame update
@@ -115,9 +117,12 @@ public class Enemy : MonoBehaviour
     }
     private void dead()
     {
+        GameController.instance.virusCount += 1;
         SoundManager.instance.PlayOneShotClip("EnemyAttack");
         speed = 0;
         GetComponent<Animator>().Play("dead");
         Destroy(gameObject, 0.75f);
+
     }
+
 }
