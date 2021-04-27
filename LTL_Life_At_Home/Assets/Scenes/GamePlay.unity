@@ -8532,17 +8532,16 @@ MonoBehaviour:
   maskBar: {fileID: 1867052889}
   countFood: {fileID: 1328420112}
   timeTxt: {fileID: 1931033095}
-  virusCountTxt: {fileID: 1276920338}
   timeO: {fileID: 309954394}
-  virO: {fileID: 379338442}
+  txtVirusCount: {fileID: 1276920338}
   score: 0
   foodCount: 0
+  virusCount: 0
   itemCount: 000000000000000000000000
   startHungerPoint: 100
   hungerPoint: 0
   healthValue: 20
   time: 0
-  virusCount: 0
   grandmaGotTouched: 0
   listHightTime:
   - 0
